@@ -163,7 +163,7 @@ public class registration extends AppCompatActivity implements View.OnClickListe
                                     finish();
                                     startActivity(new Intent(registration.this,registration.class));
 
-                                }l
+                                }
                             }
                         }
                     });
