@@ -171,7 +171,7 @@ public class registration extends AppCompatActivity implements View.OnClickListe
         else
         {
             Toast.makeText(registration.this, "Enter complete code", Toast.LENGTH_SHORT).show();
-            r
+            return;
             //startActivity(new Intent(registration.this,registration.class));
         }
     }
