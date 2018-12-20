@@ -163,7 +163,7 @@ public class registration extends AppCompatActivity implements View.OnClickListe
                                     finish();
                                     startActivity(new Intent(registration.this,registration.class));
 
-                                }l
+                                }
                             }
                         }
                     });
@@ -171,7 +171,7 @@ public class registration extends AppCompatActivity implements View.OnClickListe
         else
         {
             Toast.makeText(registration.this, "Enter complete code", Toast.LENGTH_SHORT).show();
-            return;
+            r
             //startActivity(new Intent(registration.this,registration.class));
         }
     }
