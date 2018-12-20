@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/grad_bg2"
+    tools:context="com.example.khan.a1stmodule.registration">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="100dp">
+
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="20dp"
+                android:src="@drawable/checked" />
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="20dp"
+                android:src="@drawable/checked" />
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="20dp"
+                android:src="@drawable/checked" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/profile_upload" />
+        <Button
+            android:id="@+id/chooseimg"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="profile picture"
+            android:textStyle="bold"
+            android:background="@drawable/btn_bg"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnupload"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/linlay1"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="UPLOAD"
+            android:visibility="invisible"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+
+
+
+

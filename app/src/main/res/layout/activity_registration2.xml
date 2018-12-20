@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/grad_bg2"
+    tools:context="com.example.khan.a1stmodule.registration">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp">
+
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="20dp"
+                android:src="@drawable/checked" />
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="20dp"
+                android:src="@drawable/checked" />
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="20dp"
+                android:src="@drawable/not_checked" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="name"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/et_bg"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Email"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/et_bg"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="15dp"
+                android:hint="xyzgmail.com"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="Password"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/password"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/et_bg"
+            android:fontFamily="sans-serif-light"
+            android:paddingLeft="15dp"
+            android:drawableLeft="@drawable/key"
+            android:paddingRight="15dp"
+            android:minEms="3"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="RE-entee   Password"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/password2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/et_bg"
+            android:fontFamily="sans-serif-light"
+            android:paddingLeft="15dp"
+            android:drawableLeft="@drawable/key"
+            android:paddingRight="15dp"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/linlay1"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="submit"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+
+
+
+

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="530dp"
+    android:background="@drawable/grad_bg2"
+    android:padding="5dp"
+    android:layout_gravity="center">
+    <TextView
+        android:id="@+id/txtclose"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:textColor="#000000"
+        android:text="close"
+        android:textStyle="bold"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:background="@drawable/btn_bg"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/profile_upload"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"/>
+        <TextView
+            android:id="@+id/uplaod_profile"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile Pic"
+            android:textColorLink="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CAB Service Company"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:paddingRight="2dp"
+            android:layout_marginTop="5dp"/>
+
+        <Spinner
+            android:id="@+id/company_name"
+            android:layout_width="150dp"
+            android:layout_height="34dp"
+            android:drawableRight="@drawable/dropdown"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/dr_text_bg"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver FIRST NAME"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:paddingRight="2dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/driver_first"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/dr_text_bg"
+                android:fontFamily="sans-serif-light"
+                android:hint="Asif"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/darkgrey"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:paddingLeft="10dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Driver LAST NAME"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:paddingRight="2dp"
+                    android:layout_marginTop="5dp"/>
+
+                <EditText
+                    android:id="@+id/driver_last"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/dr_text_bg"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="khan"
+                    android:inputType="text"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/darkgrey"
+                    android:textSize="15sp" />
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:paddingBottom="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Car Brand"
+                android:textStyle="bold"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:paddingRight="2dp"
+                android:layout_marginTop="5dp"/>
+
+            <Spinner
+                android:id="@+id/brand_name"
+                android:layout_width="150dp"
+                android:layout_height="34dp"
+                android:drawableRight="@drawable/dropdown"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/dr_text_bg"/>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="2dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Model"
+                    android:textStyle="bold"
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    android:paddingRight="2dp"
+                    android:layout_marginTop="5dp"/>
+
+                <Spinner
+                    android:id="@+id/car_model"
+                    android:layout_width="75dp"
+                    android:layout_height="34dp"
+                    android:drawableRight="@drawable/dropdown"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/dr_text_bg"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="2dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Year"
+                    android:textStyle="bold"
+                    android:inputType="text"
+
+                    android:textColor="@color/white"
+
+                    android:layout_marginTop="5dp"/>
+
+                <Spinner
+                    android:id="@+id/year"
+                    android:layout_width="80dp"
+                    android:layout_height="34dp"
+
+                    android:drawableRight="@drawable/dropdown"
+                    android:spinnerMode="dropdown"
+                    android:background="@drawable/dr_text_bg"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="phone no"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <EditText
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/et_bg"
+                android:fontFamily="sans-serif-light"
+                android:inputType="number|phone"
+                android:drawableLeft="@drawable/phone"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="+92"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp">
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+               <TextView
+
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Car Registration NO"
+                   android:textStyle="bold"
+                   android:textColor="@color/white"
+                   android:paddingRight="2dp"
+                   android:layout_marginTop="5dp"/>
+
+               <EditText
+                   android:id="@+id/car_reg_no"
+                   android:layout_width="150dp"
+                   android:layout_height="40dp"
+                   android:layout_marginTop="5dp"
+                   android:background="@drawable/dr_text_bg"
+                   android:fontFamily="sans-serif-light"
+                   android:hint="ABJ051"
+                   android:inputType="text"
+                   android:paddingLeft="15dp"
+                   android:paddingRight="15dp"
+                   android:textColor="@color/white"
+                   android:textColorHint="@color/darkgrey"
+                   android:textSize="15sp" />
+
+           </LinearLayout>
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingLeft="20dp">
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <LinearLayout
+                       android:paddingLeft="10dp"
+                       android:layout_marginLeft="4dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:orientation="vertical">
+
+
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="45dp"
+                           android:src="@drawable/upload_car"/>
+                       <TextView
+                           android:id="@+id/car_pic"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Car Picture"
+                           android:textStyle="bold"
+                           android:layout_gravity="center"
+                           android:textColor="@color/white"
+                           android:paddingRight="2dp"
+                           android:layout_marginTop="5dp"/>
+
+                   </LinearLayout>
+
+               </LinearLayout>
+
+       </LinearLayout>
+
+       </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/save_driver_car"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="sans-serif-medium"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:text="SAVE"
+        android:textStyle="bold"
+
+        android:textColor="#029900"
+        android:textSize="18sp" />
+</LinearLayout>
