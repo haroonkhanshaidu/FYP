@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <!-- mapbox permission -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -17,7 +18,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/car"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat">
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +32,9 @@
         <activity android:name=".registration" />
         <activity android:name=".registration3" />
         <activity android:name=".registration2" />
+        <activity android:name=".mapbox" />
+        <activity android:name=".login_page" />
+        <activity android:name=".passenger_longin"></activity>
     </application>
 
 </manifest>

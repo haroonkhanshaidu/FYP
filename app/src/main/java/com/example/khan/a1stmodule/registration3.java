@@ -25,12 +25,10 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class registration3 extends AppCompatActivity {
-    ImageView imageView;
-    Button  btnUpload;
-    Button btnChoose;
+    ImageView user_profile_photo;
+    Button  finishingup;
     Uri filePath;
     int PICK_IMAGE_REQUEST = 71;
-    Button done;
     FirebaseStorage storage;
     StorageReference storageReference;
 
@@ -39,26 +37,24 @@ public class registration3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration3);
+        setContentView(R.layout.profile_settingup);
 
-       // done = (Button) findViewById(R.id.done);
 
-        btnChoose = (Button) findViewById(R.id.chooseimg);
-        btnUpload = (Button) findViewById(R.id.btnupload);
-        imageView = (ImageView) findViewById(R.id.imgView);
+        finishingup = (Button) findViewById(R.id.Finishup);
+        user_profile_photo = (ImageView) findViewById(R.id.user_profile_photo);
 
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        btnChoose.setOnClickListener(new View.OnClickListener() {
+        user_profile_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
             }
         });
 
-        btnUpload.setOnClickListener(new View.OnClickListener() {
+        finishingup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadImage();
@@ -66,28 +62,11 @@ public class registration3 extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
-
-//        done.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent passenger  = new Intent(registration3.this,passenger_profile.class);
-//                startActivity(passenger);
-//            }
-//        });
     }
 
     private void chooseImage() {
 
-        findViewById(R.id.btnupload).setVisibility(View.VISIBLE);
-        findViewById(R.id.chooseimg).setVisibility(View.INVISIBLE);
+        findViewById(R.id.Finishup).setVisibility(View.VISIBLE);
 
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -104,7 +83,7 @@ public class registration3 extends AppCompatActivity {
             filePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imageView.setImageBitmap(bitmap);
+                user_profile_photo.setImageBitmap(bitmap);
             }
             catch (IOException e)
             {

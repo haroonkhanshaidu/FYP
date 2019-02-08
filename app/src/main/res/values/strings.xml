@@ -16,4 +16,9 @@
         completions."
     </string>
     <string name="title_activity_registration2">registration2</string>
+    <string name="access_token">pk.eyJ1IjoiaGFyb29ua2hhbiIsImEiOiJjanF6M2J3MG4wOWNzM3hwY2ZnMmc5Y2lwIn0.udbyuYaM7HQ6b3rXjFkAGQ</string>
+    <string name="user_location_permission_explanation">Turn device GPS on</string>
+    <string name="user_location_permission_not_granted">turn</string>
+    <string name="mapbox_style_Url">mapbox://styles/haroonkhan/cjr1jnd2p0a2q2qk4ut0le3q8</string>
+
 </resources>

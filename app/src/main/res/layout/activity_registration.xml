@@ -1,155 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@drawable/grad_bg2"
+    android:background="@drawable/grad_bg"
     tools:context="com.example.khan.a1stmodule.registration">
 
-
-
-<LinearLayout
+<RelativeLayout
+    android:id="@+id/rlayout1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="20dp">
 
-        <LinearLayout
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="110dp"
-                android:layout_height="20dp"
-                android:src="@drawable/checked" />
-            <ImageView
-                android:layout_width="110dp"
-                android:layout_height="20dp"
-                android:src="@drawable/not_checked" />
-            <ImageView
-                android:layout_width="110dp"
-                android:layout_height="20dp"
-                android:src="@drawable/not_checked" />
-
-        </LinearLayout>
-    <ProgressBar
+</RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/rlayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="invisible"
-        android:id="@+id/pbar"/>
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-</LinearLayout>
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="20dp"
+            android:src="@drawable/checked" />
 
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="20dp"
+            android:src="@drawable/not_checked" />
 
-        <LinearLayout
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="20dp"
+            android:src="@drawable/not_checked" />
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/lay1">
+    </LinearLayout>
 
-
-
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif-light"
-                android:text="Enter phone no "
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="15sp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/et_bg"
-                android:id="@+id/phoneno"
-                android:fontFamily="sans-serif-light"
-                android:inputType="number|phone"
-                android:drawableLeft="@drawable/phone"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="+92"
-                android:textColor="@color/white"
-                android:textSize="24dp" />
-            <Button
-                android:id="@+id/sendcode"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_below="@+id/linlay1"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:background="@drawable/btn_bg"
-                android:fontFamily="sans-serif-medium"
-                android:paddingLeft="70dp"
-                android:paddingRight="70dp"
-                android:text="Send verification code"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-
-
-
-        </LinearLayout>
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lay2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="136dp"
+        android:orientation="vertical"
+        android:paddingTop="30dp">
+
+
+        <ProgressBar
+            android:id="@+id/pbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:id="@+id/lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="290dp"
         android:orientation="vertical">
 
 
         <EditText
+            android:id="@+id/phoneno"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:hint="Enter phone number to register"
             android:background="@drawable/et_bg"
-            android:id="@+id/code"
+            android:drawableLeft="@drawable/phone"
             android:fontFamily="sans-serif-light"
             android:inputType="number|phone"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/sendcode"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/linlay1"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:text="Send verification code"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="183dp"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/et_bg"
+            android:fontFamily="sans-serif-light"
             android:hint="enter code here"
+            android:inputType="number|phone"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:textColor="@color/white"
             android:textSize="24dp" />
+
         <Button
             android:id="@+id/verify"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_below="@+id/linlay1"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:background="@drawable/btn_bg"
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
             android:text="verify"
-            android:layout_marginTop="10dp"
             android:textAllCaps="false"
-            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@drawable/btn_bg"
             android:onClick="ShowPopup"
             android:text="Add CAB"
-            android:layout_gravity="center"
             android:textColor="@color/white"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
     </LinearLayout>
 
 
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

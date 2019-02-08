@@ -40,8 +40,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initial();
-        mAuth.signOut();
-
+//        mAuth.signOut();
         }
 
 

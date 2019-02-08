@@ -30,7 +30,7 @@ public class registration2 extends AppCompatActivity{
     Button submit;
     private static final String TAG = "AddToDatabase";
     private FirebaseAuth mAuth;
-    private EditText password,password2,name,email;
+    private EditText password,password2,fname1,lname1;
     String phonenumber;
     private EditText username;
     private String userID;
@@ -46,6 +46,7 @@ public class registration2 extends AppCompatActivity{
 
          mAuth = FirebaseAuth.getInstance();
         phonenumber = getIntent().getExtras().getString("number");
+
                  initialfields();
 
     }
@@ -61,8 +62,8 @@ public class registration2 extends AppCompatActivity{
             }
         });
 
-        name = (EditText)findViewById(R.id.name);
-        email = (EditText)findViewById(R.id.email);
+        fname1 = (EditText)findViewById(R.id.fname);
+        lname1 = (EditText)findViewById(R.id.lname);
         password = (EditText)findViewById(R.id.password);
         password2 = (EditText)findViewById(R.id.password2);
 
@@ -80,52 +81,54 @@ public class registration2 extends AppCompatActivity{
 
     void register() {
 
-        final String Name = name.getText().toString().trim();
-        final String Email = email.getText().toString().trim();
+        final String fname = fname1.getText().toString().trim();
+        final String lname = lname1.getText().toString().trim();
         final String Password1 = password.getText().toString().trim();
         String Password2 = password2.getText().toString().trim();
-        Query usernamequery = FirebaseDatabase.getInstance().getReference().child("users").orderByChild("phone_no").equalTo(phonenumber);
-        usernamequery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getChildrenCount() > 0) {
-                    Toast.makeText(getApplicationContext(), "this phone no is already used", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(), "use new phone no", Toast.LENGTH_SHORT).show();
-                    return;
-                } else {
-                        reg(Name,Email,Password1);
-                }
-            }
+//        Query usernamequery = FirebaseDatabase.getInstance().getReference().child("user").child("passenger").orderByChild("phone").equalTo(phonenumber);
+//        usernamequery.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.getChildrenCount() > 0) {
+//                    Toast.makeText(getApplicationContext(), "this phone no is already used", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), "use new phone no", Toast.LENGTH_LONG).show();
+//                    return;
+//                } else {
+                        reg(fname,lname,phonenumber,Password1);
+//                }
+//            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        if (TextUtils.isEmpty(Email)) {
-            Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show();
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+        if (TextUtils.isEmpty(fname)) {
+            Toast.makeText(this, "Enter First", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (TextUtils.isEmpty(Name)) {
-            Toast.makeText(this, "enter name", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(lname)) {
+            Toast.makeText(this, "Enter Last", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(Password1)) {
-            Toast.makeText(this, "enter password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
             return;
         }
-//        if (Password1 != Password2){
-//            Toast.makeText(this, "enter same password", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        if (Password1 != Password2){
+            Toast.makeText(this, "reEnter password", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
     }
-      public void reg(String Name,String Email,String Password1) {
-            final String fname = Name;
+      public void reg(String fname,String lname,String phonenumber,String pass1) {
+            final String First_name = fname,Last_name = lname;
+            String email = phonenumber+"@a.com",phone = phonenumber, pass = pass1 ;
+
             progressDialog.setMessage("creating new account plz wait.....");
             progressDialog.show();
 
-            mAuth.createUserWithEmailAndPassword(Email,Password1)
+            mAuth.createUserWithEmailAndPassword(email,pass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -135,10 +138,11 @@ public class registration2 extends AppCompatActivity{
                                     //User is successfully registered and logged in
                                     //start Profile Activity here
                                     String user_id = mAuth.getCurrentUser().getUid();
-                                    DatabaseReference currentuser_db = FirebaseDatabase.getInstance().getReference().child("users").child(user_id);
+                                    DatabaseReference currentuser_db = FirebaseDatabase.getInstance().getReference().child("user").child("passenger").child(user_id);
                                     Map newpost =new HashMap<>();
-                                    newpost.put("Name",fname);
-                                    newpost.put("phone_no",phonenumber);
+                                    newpost.put("First_name",First_name);
+                                    newpost.put("Last_name",Last_name);
+                                    newpost.put("phone",phone);
                                     currentuser_db.setValue(newpost);
                                     progressDialog.dismiss();
                                     Toast.makeText(registration2.this, "registration successful",
@@ -157,62 +161,12 @@ public class registration2 extends AppCompatActivity{
                     });
         }
 
+
+
     }
 
 
 
-
-
-
-//        public void onClick(View v) {
-//                switch (v.getId()) {
-//                    case R.id.submit:
-//
-//
-////                        username.setText(phonenumber);
-////                        upassword = (EditText) findViewById(R.id.password);
-////                        submit = (Button) findViewById(R.id.submit);
-////                        upassword.setText(((EditText) findViewById(R.id.password)).getText());
-////                        String p = upassword.toString();
-////                        String n = phonenumber;
-////                        RegisterUser(n,p);
-//
-//                }
-//
-//        }
-
-
-
- //       public void RegisterUser(String a,String b){
-
-
-//            if (TextUtils.isEmpty(Password)){
-//                Toast.makeText(this, "A Field is Empty", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//            String username1 = a;
-//            String password1 = b;
-//            mAuth.createUserWithEmailAndPassword(username1, password1)
-//                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                                //check if successful
-//                                if (task.isSuccessful()) {
-//                                    //User is successfully registered and logged in
-//                                    //start Profile Activity here
-//                                    Toast.makeText(registration2.this, "registration successful",
-//                                            Toast.LENGTH_SHORT).show();
-//                                    finish();
-//                                    startActivity(new Intent(getApplicationContext(), registration3.class));
-//                                } else {
-//                                    Toast.makeText(registration2.this, "Couldn't register, try again",
-//                                            Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//
-//                    });
-//        }
 
 
 

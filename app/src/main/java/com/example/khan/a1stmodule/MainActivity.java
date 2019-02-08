@@ -18,37 +18,18 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-     mAuth=FirebaseAuth.getInstance();
+     mAuth = FirebaseAuth.getInstance();
      if(mAuth != null)
      {
-         startActivity(new Intent(MainActivity.this,login.class));
+         startActivity(new Intent(MainActivity.this,mapbox.class));
     }
     else {
-         Intent i = new Intent(MainActivity.this,login.class);
+         Intent i = new Intent(MainActivity.this,passenger_longin.class);
          startActivity(i);
      }
 
-
-///Add this method below auth initialization in the onCreate method.
-
-
-
-
-//        mlogout = (Button) findViewById(R.id.logoutbtn);
-//
-//        mlogout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mAuth.signOut();
-//                sendToAuth();
-//            }
-//        });
-
-
-
-
-    }}
+   }
+}
 
 
 

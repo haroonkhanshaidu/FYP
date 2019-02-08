@@ -1,6 +1,7 @@
 package com.example.khan.a1stmodule;
 
 
+import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Intent;
@@ -22,19 +23,16 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 
 public class passenger_profile extends AppCompatActivity{
     FirebaseAuth mAuth;
     FirebaseUser muser;
-    Button logoutbtn;
+    Button actionBar;
     DrawerLayout mdrawerlayout;
     ActionBarDrawerToggle mToggle;
+
 
 
 
@@ -43,25 +41,18 @@ public class passenger_profile extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_profile);
         initial();
-        showbar();
+       // showbar();
 
-        logoutbtn.setOnClickListener(new View.OnClickListener() {
+
+        actionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout();
             }
         });
-//FirebaseUser user =mAuth.getCurrentUser();
-//String photourl = user.getPhotoUrl().toString();
-//String displayname =user.getDisplayName();
-//TextView n= findViewById(R.id.a);
-//ImageView ph=findViewById(R.id.pf);
-//        Glide.with(this).load(user.getPhotoUrl().toString()).into(ph);
-//        n.setText(user.getDisplayName());
+
     }
 
     void initial() {
-        logoutbtn = findViewById(R.id.logoutbt);
         mdrawerlayout = findViewById(R.id.drawer);
 //       mAuth = FirebaseAuth.getInstance();
 //       muser = FirebaseAuth.getInstance().getCurrentUser();
@@ -99,6 +90,7 @@ public class passenger_profile extends AppCompatActivity{
 
 
     void showbar() {
+
         mToggle = new ActionBarDrawerToggle(this, mdrawerlayout, R.string.open, R.string.close);
         mdrawerlayout.addDrawerListener(mToggle);
         mToggle.syncState();
@@ -118,44 +110,4 @@ public class passenger_profile extends AppCompatActivity{
 
 
 
-
-
-    void logout() {
-       mAuth.signOut();
-
-       // Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(passenger_profile.this, login.class));
-        finish();
-    }
-
-
-
-
-
-
-
-//    public void ShowPopupout(View v) {
-//        TextView txtclose;
-//        //Button btnFollow;
-//     myDialog.setContentView(R.layout.confrmlogout);
-//        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
-//        sure = (Button) findViewById(R.id.surelogout);
-//        //txtclose.setText("cancel");
-//
-//        sure.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                logout();
-//            }
-//        });
-//
-//        txtclose.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                myDialog.dismiss();
-//            }
-//        });
-//        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        myDialog.show();
-//    }
 }

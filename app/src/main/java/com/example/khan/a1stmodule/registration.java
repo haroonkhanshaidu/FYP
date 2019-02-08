@@ -1,6 +1,9 @@
 package com.example.khan.a1stmodule;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,6 +22,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,10 +34,13 @@ public class registration extends AppCompatActivity implements View.OnClickListe
    // Dialog myDialog;
 
     private FirebaseAuth mAuth;
-    String phonenumber,forgeteduser;
+    String phonenumber,forgeteduser,phone_n;
     EditText phone_no,code;
+
     Button verify,sendcode;
-    String mVerificationId;
+    String mVerificationId,flage="0";
+
+
 
 //    private FirebaseAuth firebaseAuth;
 
@@ -39,11 +51,23 @@ public class registration extends AppCompatActivity implements View.OnClickListe
         Intent intent = getIntent();
         forgeteduser = intent.getStringExtra("forgot");
 
-
         findViewById(R.id.lay2).setVisibility(LinearLayout.INVISIBLE);
         initFields();
         mAuth = FirebaseAuth.getInstance();
         initFireBaseCallbacks();
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.sendcode:
+                sendcode();
+                break;
+            case R.id.verify:
+                verify();
+                break;
+        }
     }
 
 
@@ -79,8 +103,6 @@ public class registration extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-
-                Toast.makeText(registration.this, "Verification Failed", Toast.LENGTH_SHORT).show();
                 Toast.makeText(registration.this, "Try Again", Toast.LENGTH_SHORT).show();
                 finish();
                 startActivity(new Intent(registration.this,registration.class));
@@ -102,46 +124,64 @@ public class registration extends AppCompatActivity implements View.OnClickListe
             }
         };
     }
-    @Override
-    public void onClick(View view) {
 
-        switch (view.getId()) {
-            case R.id.sendcode:
-                sendcode();
-                break;
-            case R.id.verify:
-               verify();
-                break;
-
-
-        }
-    }
     void sendcode() {
 
-            findViewById(R.id.pbar).setVisibility(View.VISIBLE);
-            findViewById(R.id.lay1).setVisibility(LinearLayout.INVISIBLE);
+        findViewById(R.id.pbar).setVisibility(View.VISIBLE);
+        int lenth =  phone_no.getText().toString().length();
+        if(lenth !=11 )
+        {
+            Toast.makeText(registration.this, "plz enter a valid phone no", Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(registration.this,registration.class));
+            findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
+            return;
+        }
 
-            int lenth =  phone_no.getText().toString().length();
-            if(lenth !=13 )
-            {
-                Toast.makeText(registration.this, "plz enter a valid phone no", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(registration.this,registration.class));
+
+        String phone_n = phone_no.getText().toString();
+        String phone_nl = phone_n.replaceFirst("0","+92");
+
+
+//        Toast.makeText(registration.this, phone_n, Toast.LENGTH_SHORT).show();
+
+        Query usernamequery = FirebaseDatabase.getInstance().getReference().child("user").child("passenger").orderByChild("phone").equalTo(phone_n);
+        usernamequery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount() >0){
+                    Toast.makeText(getApplicationContext(), "this phone no is already used", Toast.LENGTH_LONG).show();
+                   flage = "1";
+                    findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
+                    return;
+                }
             }
-        else {
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        if(flage == "1")
+         {
+                findViewById(R.id.pbar).setVisibility(View.VISIBLE);
+                findViewById(R.id.lay1).setVisibility(LinearLayout.INVISIBLE);
+
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                        phone_no.getText().toString(),        // Phone number to verify
+                        phone_nl,        // Phone number to verify
                         1,                 // Timeout duration
                         TimeUnit.MINUTES,   // Unit of timeout
                         this,               // Activity (for callback binding)
                         mCallbacks);        // OnVerificationStateChangedCallbacks
-            }
+         }
         }
 
     void verify()
     {
         findViewById(R.id.pbar).setVisibility(View.VISIBLE);
         int lenth = code.getText().toString().length();
-        if(lenth ==6 ) {
+        if(lenth == 6 ) {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code.getText().toString());
             mAuth.signInWithCredential(credential)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -149,17 +189,16 @@ public class registration extends AppCompatActivity implements View.OnClickListe
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 findViewById(R.id.pbar).setVisibility(View.INVISIBLE);
-                                Toast.makeText(registration.this, "phone NO verified", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(registration.this, "phone number verified", Toast.LENGTH_SHORT).show();
 
                                 Intent registration2 = new Intent(registration.this, registration2.class);
                                 registration2.putExtra("number", phone_no.getText().toString());
-
                                 startActivity(registration2);
                                 finish();
 
                             } else {
                                 if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                    Toast.makeText(registration.this, "Verification Failed re send code", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(registration.this, "Verification Failed. resend code", Toast.LENGTH_SHORT).show();
                                     finish();
                                     startActivity(new Intent(registration.this,registration.class));
 
@@ -179,8 +218,9 @@ public class registration extends AppCompatActivity implements View.OnClickListe
 
 //        myDialog = new Dialog(this);
 //
-//    }
-//
+////
+////    }
+////
 //    public void ShowPopup(View v) {
 //        TextView txtclose;
 //        Button btnFollow;
